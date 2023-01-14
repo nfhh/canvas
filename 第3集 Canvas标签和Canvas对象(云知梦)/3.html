@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			canvas{
+				width: 250px;
+				height: 250px;
+				border: 1px solid purple;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				//获取canvas对象
+				var oCanvas = document.getElementById("canvas");
+				//需要得到一个2D绘图上下环境对象引用
+				//alert(oCanvas.getContext("2d"));  //[object CanvasRenderingContext2D]
+				var oContext = oCanvas.getContext("2d");
+				for(var prop in oContext ){
+					document.write(prop+"<br/>");
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="canvas"></canvas>
+	</body>
+</html>

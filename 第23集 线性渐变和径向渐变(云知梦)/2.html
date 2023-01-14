@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>线性渐变</title>
+		<style type="text/css">
+			canvas{
+				border: 1px dashed gray;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				//获取canvas对象
+				var oCanvas = document.getElementById("canvas");
+				//检测浏览器是否支持canvas
+				if(oCanvas.getContext){
+					//得到2d绘图上下文环境
+					var oContext = oCanvas.getContext("2d");
+					/*
+					 * createLinearGradient(x1, y1, x2, y2)参数说明：
+						x1渐变开始点的 x 坐标		y1渐变开始点的 y 坐标
+						x2渐变结束点的 x 坐标		y2渐变结束点的 y 坐标
+
+					 */
+					var gnt = oContext.createLinearGradient(0,0,200,200);
+					/*
+					 addColorStop(stop,color)参数说明：
+						stop	介于 0.0 与 1.0 之间的值，表示渐变中开始与结束之间的位置。
+						color	在结束位置显示的 CSS 颜色值
+
+					 * */
+					gnt.addColorStop(0,"red");
+					gnt.addColorStop(1,"blue");
+					
+					//更改样式的颜色
+					oContext.fillStyle = gnt;
+					//绘制矩形
+					oContext.fillRect(10,10,200,200);
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="canvas" width="600" height="600"></canvas>
+	</body>
+</html>

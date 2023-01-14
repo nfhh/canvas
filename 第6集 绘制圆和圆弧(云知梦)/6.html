@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			canvas{
+				border: 1px dashed gray;
+				position: absolute;
+				top: 50px;
+				left: 50%;
+				margin-left: -450px;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				//需求：arcTo(控制点cx,控制点cy,结束点x2,结束点y2,半径)绘制弧线。需要定义一个起始点，moveTo
+				//获取canvas元素对象
+				var oCanvas = document.getElementById("canvas");
+				if(oCanvas.getContext){
+					//得到一个2d绘图上下文环境
+					var oContext = oCanvas.getContext("2d");
+					//开始绘制图形
+					oContext.beginPath();
+					//定义一个起点
+					oContext.moveTo(150,150);
+					oContext.arcTo(650,150,650,650,350);
+					//描边的颜色
+					oContext.strokeStyle = 'orangered';
+					//oContext.closePath();
+					oContext.stroke();
+					
+					//定义线条
+					oContext.beginPath();
+					oContext.moveTo(150,150);
+					oContext.lineTo(650,150);
+					oContext.lineTo(650,650);
+					oContext.strokeStyle = '#000';
+					oContext.stroke();
+					
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="canvas" width="900" height="900"></canvas>
+	</body>
+</html>

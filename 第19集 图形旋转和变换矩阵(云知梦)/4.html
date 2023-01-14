@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>setTransform()单位矩阵</title>
+		<style type="text/css">
+			canvas{
+				border: 1px dashed gray;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				/*
+				 一个新的2d渲染上下文将包含一个全新的变换矩阵，
+				 即单位矩阵(identity matrix),除了左上角至右下角的主对角线以外，
+				 这个特殊矩阵的每个值都设置为0。原因是更适合进行计算，
+				 单位矩阵表示完全未执行过变形。
+				setTransform() 方法把当前的变换矩阵重置为单位矩阵。
+				重置前面一个矩阵，然后重新构建新的矩阵
+
+				 * */
+				//获取canvas元素对象
+				var oCanvas = document.getElementById("canvas");
+				//检测浏览器是否支持canvas
+				if(oCanvas.getContext){
+					//得到一个2d绘图上下文环境
+					var oContext = oCanvas.getContext("2d");
+					//绘制一个矩形
+					//绘制的颜色为红色
+					oContext.fillStyle = "red";
+					//开始绘制
+					oContext.fillRect(0,0,250,100);
+					
+					//设置setTransform()单位矩阵
+					oContext.setTransform(1,0.5,-0.5,1,30,30);
+					//在绘制一个矩形
+					//绘制的颜色为蓝色
+					oContext.fillStyle = "blue";
+					//开始绘制矩形了
+					oContext.fillRect(0,0,250,100);
+					
+					//在设置一个单位矩阵
+					oContext.setTransform(1,0.5,-0.5,1,30,30);
+					//绘制矩形
+					//绘制的颜色为黄色
+					oContext.fillStyle = "yellow";
+					//开始绘制了矩形
+					oContext.fillRect(0,0,250,100);
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="canvas" width="600" height="600"></canvas>
+	</body>
+</html>

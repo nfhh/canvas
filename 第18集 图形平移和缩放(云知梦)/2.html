@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>translate平移</title>
+		<style type="text/css">
+			canvas{
+				border: 1px dashed gray;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				// 获取canvas对象
+				var oCanvas = document.getElementById("canvas");
+				if(oCanvas.getContext){
+					//得到2d绘图上下文环境
+					var oContext = oCanvas.getContext("2d");
+					//绘制一个矩形
+					oContext.fillStyle = "orange";
+					oContext.fillRect(0,0,100,50);
+					//平移
+					oContext.translate(-20,200);
+					oContext.beginPath();
+					oContext.fillStyle = "red";
+					oContext.fillRect(0,0,100,50);
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="canvas" width="600" height="600"></canvas>
+	</body>
+</html>

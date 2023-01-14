@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>lineWidth设置线条的宽度</title>
+		<style type="text/css">
+			canvas{
+				border: 1px dashed gray;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				var oCanvas = document.getElementById("canvas");
+				if(oCanvas.getContext){
+					var oContext = oCanvas.getContext("2d");
+					//线条的宽度默认是1
+					//oContext.lineWidth = 1;
+					oContext.lineWidth = 10;
+					oContext.moveTo(20,20);
+					oContext.lineTo(200,20);
+					oContext.stroke();
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="canvas" width="250" height="250"></canvas>
+	</body>
+</html>

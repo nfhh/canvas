@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>scale缩放</title>
+		<style type="text/css">
+			canvas{
+				border: 1px dashed gray;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				/*
+				 缩放scale()方法是调整元素在2D上下文中的尺寸，
+				 与平移的区别在于(x,y)参数是缩放倍数，而不是像素值。
+				 单独使用该方法，会让之后所有元素都跟着放大相应的倍数。
+				 这个结果是我们不想要的。
+				我们可以在缩放前，先调用save()方法，保存一下绘图状态，
+				等当前元素执行了缩放之后，
+				我们再调用一下restore()方法，这样就可以恢复到之前的绘图状态了，
+				从而实现只对当前元素进行缩放的操作。
+				格式：2d.scale(x,y)
+
+				 * */
+				//获取canvas对象
+				var oCanvas = document.getElementById("canvas");
+				//检测浏览器是否支持canvas
+				if(oCanvas.getContext){
+					//得到一个2d绘图上下文环境
+					var oContext = oCanvas.getContext("2d");
+					//填充样式
+					oContext.fillStyle = "yellow";
+					//绘制一个矩形
+					oContext.fillRect(0,0,100,50);
+					//缩放操作 2d.scale(水平位置,垂直位置)
+					oContext.scale(1,1);   //如果值是等于1的，大小不变，如果值是小于1，那就是缩小，如果值是大于1，就是放大
+					//更改一下颜色
+					oContext.fillStyle = "darkgoldenrod";
+					oContext.fillRect(100,100,100,50);
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="canvas" width="600" height="600"></canvas>
+	</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>透明度</title>
+		<style type="text/css">
+			canvas{
+				border: 1px dashed gray;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				//获取canvas对象
+				var oCanvas = document.getElementById("canvas");
+				//检测浏览器是否支持canvas
+				if(oCanvas.getContext){
+					//得到2d绘图上下文环境
+					var oContext = oCanvas.getContext("2d");
+					
+					//图片对象
+					var oImg = new Image();
+					//设置图片的路径
+					oImg.src = "1.jpg";
+					//图片加载完毕后，执行操作
+					oImg.onload = function(){
+						oContext.drawImage(oImg,10,10);
+						//得到oImageData对象
+						var oImageData = oContext.getImageData(10,10,200,153);
+						var data = oImageData.data;
+						//只要把透明度乘以一个0~1之间的值即可。跟css的opacity一样
+						for(var i=0;i<data.length;i+=4){
+							data[i+3]*=0.2;    //data[i+3] = data[i+3]*0.3
+						}
+						oContext.putImageData(oImageData,10,200);
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="canvas" width="600" height="600"></canvas>
+	</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>调节亮度的强弱</title>
+		<style type="text/css">
+			canvas{
+				border: 1px dashed gray;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				//获取canvas对象
+				var oCanvas = document.getElementById("canvas");
+				//检测浏览器是否支持canvas
+				if(oCanvas.getContext){
+					//得到2d绘图上下文环境
+					var oContext = oCanvas.getContext("2d");
+					
+					//图片对象
+					var oImg = new Image();
+					//设置图片的路径
+					oImg.src = "1.jpg";
+					//图片加载完毕后，执行操作
+					oImg.onload = function(){
+						oContext.drawImage(oImg,10,10);
+						//得到oImageData对象
+						var oImageData = oContext.getImageData(10,10,200,153);
+						//在r、g、b、通道上加上一正值就是变亮，加上负值就是变暗
+						var data = oImageData.data;
+						//	变暗：
+						for(var i=0;i<data.length;i+=4){
+							data[i+0]-=30;
+							data[i+1]-=50;
+							data[i+2]-=50;
+						}
+						oContext.putImageData(oImageData,10,200);
+
+					}
+					
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="canvas" width="600" height="600"></canvas>
+	</body>
+</html>

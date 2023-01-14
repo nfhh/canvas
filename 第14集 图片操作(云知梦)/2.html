@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			canvas{
+				border: 1px dashed gray;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				//获取canvas元素对象
+				var oCanvas = document.getElementById("canvas");
+				if(oCanvas.getContext){
+					//得到2d绘图上下文环境
+					var oContext = oCanvas.getContext("2d");
+					//更改矩形的颜色
+					oContext.fillStyle = "purple";
+					//绘制填充矩形
+					oContext.fillRect(50,50,100,50);
+					//canvas对象中提供一个toDataURL()方法
+					var imgUrl = oCanvas.toDataURL();
+					/*
+					 data:image/png表示内容是一个PNG格式的图像的数据URL。
+					 其中的base64表示数据采用base64编码格式。
+					 这种格式经常用于向使用文本数据的系统传输二进制数据（如图像）。
+					 在base64后面的所有数字、字母和符号是以文本表示的画布图像。
+					 * */
+					//document.write(imgUrl);    //data:image/png;base64,......
+					//动态创建img标签元素
+					var oImg = document.createElement("img");
+					//给这个img中src属性设置值imgUrl 
+					oImg.setAttribute("src",imgUrl);
+					//需要把body中canvas标签替换掉
+					document.body.replaceChild(oImg,oCanvas);
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="canvas" width="250" height="250"></canvas>
+	</body>
+</html>

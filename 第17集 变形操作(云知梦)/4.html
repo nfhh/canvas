@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 100px;
+				height: 100px;
+				background: red;
+				margin: 10px;
+			}
+			div:nth-child(1){
+				transform: skew(45deg,30deg);
+			}
+			div:nth-child(2){
+				transform: skewX(45deg);
+			}
+			div:nth-child(3){
+				transform: skewY(30deg);
+			}
+			
+		</style>
+	</head>
+	<body>
+		<!--skew    扭曲
+格式为：skew(x-angle,y-angle)。
+使元素在水平和垂直方向同时扭曲（X轴和Y轴同时按一定的角度值进行扭曲变形）；
+skewX(angle)仅使元素在水平方向扭曲变形（X轴扭曲变形）。
+skewY(angle)仅使元素在垂直方向扭曲变形（Y轴扭曲变形）-->
+
+		<div>skew</div>
+		<div>skewX</div>
+		<div>skewY</div>
+	</body>
+</html>

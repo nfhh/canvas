@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			canvas{
+				border: 1px dashed gray;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				//获取canvas元素对象
+				var oCanvas = document.getElementById("canvas");
+				if(oCanvas.getContext){
+					//得到2d绘图上下文环境
+					var oContext = oCanvas.getContext("2d");
+					//绘制一个描边矩形
+					oContext.beginPath();
+					
+					oContext.rect(30,30,200,160);
+					oContext.closePath();
+					oContext.stroke();
+					oContext.save();
+					//切割
+					oContext.clip();
+					
+					//恢复
+					oContext.restore();
+					
+					//绘制一个填充的矩形
+					oContext.fillStyle = "green";
+					oContext.fillRect(0,0,200,100);
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="canvas" width="600" height="600"></canvas>
+	</body>
+</html>

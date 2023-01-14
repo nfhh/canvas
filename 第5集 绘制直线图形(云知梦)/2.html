@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>绘制描边的矩形</title>
+		<style type="text/css">
+			canvas{
+				border: 1px dashed gray;
+				position: absolute;
+				top: 50px;
+				left: 50%;
+				margin-left: -125px;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				//需求，绘制描边矩形  strokeRect(x,y,w,h)
+				//获取canvas元素标签的对象
+				var oCanvas = document.getElementById("canvas");
+				if(oCanvas.getContext){
+					//得到2d绘图上下文环境
+					var oContext = oCanvas.getContext("2d");
+					//更改矩形的描边颜色
+					oContext.strokeStyle = 'orange';
+					//绘制描边矩形
+					oContext.strokeRect(30,30,50,50);
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="canvas" width="250" height="250"></canvas>
+	</body>
+</html>

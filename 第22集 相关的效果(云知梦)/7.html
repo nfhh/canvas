@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>蓝色蒙版</title>
+		<style type="text/css">
+			canvas{
+				border: 1px dashed gray;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				//获取canvas对象
+				var oCanvas = document.getElementById("canvas");
+				//检测浏览器是否支持canvas
+				if(oCanvas.getContext){
+					//得到2d绘图上下文环境
+					var oContext = oCanvas.getContext("2d");
+					
+					//图片对象
+					var oImg = new Image();
+					//设置图片的路径
+					oImg.src = "1.jpg";
+					//图片加载完毕后，执行操作
+					oImg.onload = function(){
+						oContext.drawImage(oImg,10,10);
+						//得到oImageData对象
+						var oImageData = oContext.getImageData(10,10,200,153);
+						var data = oImageData.data;
+						/*
+						 蓝色 蒙版就是让图片偏蓝色，
+						 将蓝色通道赋值为 r, g, b三原色的平均值，
+						 把绿色，红色通道设置为0，其他蒙版效果，
+						 只要设置对应的通道平均值，关闭其他通道即可.
+
+						 * */
+						var avg = 0;
+						for(var i=0;i<data.length;i+=4){
+							avg = (data[i+0]+data[i+1]+data[i+2])/3;
+							data[i+0]  = 0;
+							data[i+1]  = 0;
+							data[i+2]  = avg;
+						}
+						oContext.putImageData(oImageData,10,200);
+
+					}
+					
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="canvas" width="600" height="600"></canvas>
+	</body>
+</html>

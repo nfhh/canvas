@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>径向渐变</title>
+		<style type="text/css">
+			canvas{
+				border: 1px dashed gray;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				//获取canvas对象
+				var oCanvas = document.getElementById("canvas");
+				//检测浏览器是否支持canvas
+				if(oCanvas.getContext){
+					//得到2d绘图上下文环境
+					var oContext = oCanvas.getContext("2d");
+					
+					//createRadialGradient(x1,y1,r1,x2,y2,r2)
+					var gnt = oContext.createRadialGradient(100,50,10,80,70,50);
+					//alert(gnt);   //[object CanvasGradient]
+					gnt.addColorStop(0,"red");
+					gnt.addColorStop(0.5,"blue");
+					gnt.addColorStop(0.8,"purple");
+					gnt.addColorStop(1.0,"rgba(0,0,0,0)");
+					
+					//颜色
+					oContext.fillStyle = gnt;
+					//画圆
+					oContext.arc(80,80,50,0,Math.PI*2);
+					
+					oContext.fill();
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="canvas" width="200" height="150"></canvas>
+	</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>lineJoin 定义两个线条交接处样式</title>
+		<style type="text/css">
+			canvas{
+				border: 1px dashed gray;
+			}
+		</style>
+	</head>
+	<script type="text/javascript">
+		window.onload = function(){
+			/*
+			 属性值
+			bevel	创建斜角（衔接）。
+			round 创建圆角。
+			miter	默认。创建尖角。
+
+			 * */
+			var oCanvas = document.getElementById("canvas");
+			if(oCanvas.getContext){
+				var oContext = oCanvas.getContext("2d");
+				//画一个五角星
+				//drawStart(oContext,300,150,450,450);
+				oContext.lineWidth = 20;
+				oContext.beginPath();
+				oContext.lineJoin = 'miter';
+				drawStart(oContext,100,50,200,200);
+				
+				oContext.beginPath();
+				oContext.lineJoin = 'bevel';
+				drawStart(oContext,100,50,350,350);
+				
+				oContext.beginPath();
+				oContext.lineJoin = 'round';
+				drawStart(oContext,100,50,550,550);
+			}
+		}
+		function drawStart(oContext,R,r,x,y){
+			oContext.beginPath();
+			
+			for(var i=0;i<5;i++){
+				//外面5个点
+				oContext.lineTo(Math.cos( (18+72*i)/180*Math.PI) * R+x,-Math.sin((18+72*i)/180*Math.PI)*R+y);
+				//内部5个点
+				oContext.lineTo(Math.cos( (54+72*i)/180*Math.PI) * r+x,-Math.sin((54+72*i)/180*Math.PI) * r+y);
+			}
+			
+			oContext.closePath();
+			
+			oContext.stroke();
+		}
+	</script>
+	<body>
+		<canvas id="canvas" width="900" height="900"></canvas>
+	</body>
+</html>

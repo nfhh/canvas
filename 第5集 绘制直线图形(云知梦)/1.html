@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>绘制直线图形</title>
+		<style type="text/css">
+			canvas{
+				border: 1px dashed gray;
+			}
+		</style>
+		<script type="text/javascript">
+			//需求：绘制一个直线图形
+			//使用的工具：moveTo(x,y)		lineTo(x,y)    stroke()
+			window.onload = function(){
+				//获取canvas元素对象
+				var oCanvas = document.getElementById("canvas");
+				if(oCanvas.getContext){
+					//得到一个2d绘图上下文环境
+					var oContext = oCanvas.getContext("2d");
+					//定义线条的起始位置
+					oContext.moveTo(30,30);
+					//定义线条的结束位置
+					oContext.lineTo(50,100);
+					//更改描边的颜色，默认是黑色
+					oContext.strokeStyle = 'darkgoldenrod';
+					//描边绘制路径
+					oContext.stroke();
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="canvas" width="250" height="250"></canvas>
+	</body>
+</html>

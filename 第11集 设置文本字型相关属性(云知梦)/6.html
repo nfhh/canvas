@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>textBaseline设置当前文本基线。</title>
+		<style type="text/css">
+			canvas{
+				border: 1px dashed gray;
+			}
+		</style>
+	</head>
+	<script type="text/javascript">
+		window.onload = function(){
+			/*
+			 格式：2d.textBaseline = "top" || "hanging" || "middle" || "alphabetic" || "ideographic" || "bottom";
+			属性值：
+			top：文本基线在文本块的顶部
+			middle：文本基线在文本块的中间
+			bottom：文本基线在文本块的底部，与ideographic基线的区别在于ideographic基线不需要考虑下行字母。
+			alphabetic：默认值，文本基线是标准的字母基线。
+			ideographic：文字基线是表意字基线，如果字符本身超出了alphabetic基线，那么ideograhpic基线位置在字符本身的底部。
+			hanging：文本基线是悬挂基线。
+
+
+			 * */
+			//获取canvas对象
+			var oCanvas = document.getElementById("canvas");
+			if(oCanvas.getContext){
+				//2d
+				var oContext = oCanvas.getContext("2d");
+				
+				//显示文本
+				oContext.fillStyle = "purple";
+				
+				oContext.font = "20px 微软雅黑";
+				
+				//top：文本基线在文本块的顶部
+				oContext.textBaseline = "top";
+				oContext.fillText("Canvas-top",0,200);
+				
+				//middle：文本基线在文本块的中间
+				oContext.textBaseline = "middle";
+				oContext.fillText("Canvas-middle",300,200);
+				
+				//bottom：文本基线在文本块的底部
+				oContext.textBaseline = "bottom";
+				oContext.fillText("Canvas-bottom",500,200);
+				
+				//alphabetic：默认值，文本基线是标准的字母基线。
+				oContext.textBaseline = "alphabetic";
+				oContext.fillText("Canvas-alphabetic",700,200);
+				
+				//ideographic：文字基线是表意字基线，如果字符本身超出了alphabetic基线，那么ideograhpic基线位置在字符本身的底部。
+				oContext.textBaseline = "ideographic";
+				oContext.fillText("Canvas-ideographic",1000,200);
+				
+				//hanging：文本基线是悬挂基线。
+				oContext.textBaseline = "hanging";
+				oContext.fillText("Canvas-hanging",1100,200);
+				
+				//画线
+				oContext.strokeStyle = "#808080";
+				oContext.lineWidth = 2;
+				oContext.moveTo(0,200);
+				oContext.lineTo(1200,200);
+				oContext.stroke();
+			
+				
+				
+			}
+		}
+	</script>
+	<body>
+		<canvas id="canvas" width="1200" height="1200"></canvas>
+	</body>
+</html>

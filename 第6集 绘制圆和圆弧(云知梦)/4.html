@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			canvas{
+				border: 1px dashed gray;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				//需求：使用arc(x轴,y轴,半径,起始角度,结束角度,[默认值是false，代表顺时针,值是true，代表逆时针绘制])
+				//获取canvas元素对象
+				var oCanvas = document.getElementById("canvas");
+				if(oCanvas.getContext){
+					//得到2d绘图上下文环境
+					var oContext = oCanvas.getContext("2d");
+					//开始绘制
+					oContext.beginPath();
+					//顺时针绘制一个圆形
+					oContext.arc(50,50,50,0,Math.PI*2);
+					//结束路径
+					 //oContext.closePath();
+					//描边的圆
+					oContext.stroke();
+					
+					oContext.beginPath();
+					//顺时针绘制一个圆形
+					oContext.arc(100,100,30,0,Math.PI*2);
+					//填充颜色修改
+					oContext.fillStyle = 'purple';
+					//oContext.closePath();
+					//绘制一个填充圆
+					oContext.fill();
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="canvas" width="250" height="250"></canvas>
+	</body>
+</html>

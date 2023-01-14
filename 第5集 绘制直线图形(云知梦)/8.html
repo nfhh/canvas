@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>绘制多边形</title>
+		<style type="text/css">
+			canvas{
+				border: 1px dashed gray;
+				position: absolute;
+				top: 50px;
+				left: 50%;
+				margin-left: -125px;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				//绘制多边形
+				//获取canvas对象
+				var oCanvas = document.getElementById("canvas");
+				if(oCanvas.getContext){
+					//得到一个2d绘图上下文环境
+					var oContext = oCanvas.getContext("2d");
+					//起点
+					oContext.moveTo(30,30);
+					//结束点
+					oContext.lineTo(70,30);
+					//结束点
+					oContext.lineTo(90,60);
+					//结束点
+					oContext.lineTo(120,60);
+					//结束点
+					oContext.lineTo(30,30);
+					
+					//描边路径
+					oContext.stroke();
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="canvas" width="250" height="250"></canvas>
+	</body>
+</html>

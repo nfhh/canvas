@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>反色效果</title>
+		<style type="text/css">
+			canvas{
+				border: 1px dashed gray;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				//获取canvas对象
+				var oCanvas = document.getElementById("canvas");
+				//检测浏览器是否支持canvas
+				if(oCanvas.getContext){
+					//得到2d绘图上下文环境
+					var oContext = oCanvas.getContext("2d");
+					
+					//图片对象
+					var oImg = new Image();
+					//设置图片的路径
+					oImg.src = "1.jpg";
+					//图片加载完毕后，执行操作
+					oImg.onload = function(){
+						oContext.drawImage(oImg,10,10);
+						//得到oImageData对象
+						var oImageData = oContext.getImageData(10,10,200,153);
+						//反色效果算法：把每一个像素的r, g, b颜色取反就行，也就是( 255 - 原来的值 )
+						var data = oImageData.data;
+						for(var i=0;i<data.length;i+=4){
+							//红色
+							data[i+0]  = 255-data[i+0];
+							//绿色
+							data[i+1] = 255-data[i+1];
+							//蓝色
+							data[i+2] = 255-data[i+2];
+						}
+						oContext.putImageData(oImageData,10,200);
+					}
+					
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="canvas" width="600" height="600"></canvas>
+	</body>
+</html>

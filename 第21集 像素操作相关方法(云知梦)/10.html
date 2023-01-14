@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			canvas{
+				border: 1px dashed gray;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				//获取canvas对象
+				var oCanvas = document.getElementById("canvas");
+				//检测浏览器是否支持canvas
+				if(oCanvas.getContext){
+					//得到2d绘图上下文环境
+					var oContext = oCanvas.getContext("2d");
+					var oImageData = oContext.getImageData(10,10,100,100);
+					var oImageData2 = oContext.createImageData(oImageData);
+					var data = oImageData2.data;
+					for(var i=0;i<data.length;i+=4){
+						data[i+0] = 90;
+						data[i+1] = 60;
+						data[i+2] = 30;
+						data[i+3] = 255;
+					}
+					oContext.putImageData(oImageData2,10,10);
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="canvas" width="600" height="600"></canvas>
+	</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			canvas{
+				border: 1px dashed gray;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				//获取canvas对象
+				var oCanvas = document.getElementById("canvas");
+				//检测浏览器是否支持canvas
+				if(oCanvas.getContext){
+					//得到2d绘图上下文环境
+					var oContext = oCanvas.getContext("2d");
+					oContext.fillRect(10,10,100,50);
+					var oImgData = oContext.getImageData(10,10,60,50);
+					//alert(oImgData.data);  //涵盖了颜色信息，他是一个一维的数组
+					alert(oImgData.data.length);   //12000        60*50=3000*4 = 12000
+					//alert(oImgData.width);//宽度
+					//alert(oImgData.height);//高度
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="canvas" width="600" height="600"></canvas>
+	</body>
+</html>

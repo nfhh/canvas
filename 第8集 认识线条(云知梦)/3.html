@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			canvas{
+				border: 1px dashed gray;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				//需求：绘制五角星
+				/*
+				 五角星有10个点，每5个点分为一组，内和外，外和内都形成一个圆，每个点所组成角是72度。
+				 
+				 * 外顶点坐标
+					x:  Math.cos( (18+72*i)/180*Math.PI) * R		
+					y:  -Math.sin((18+72*i)/180*Math.PI) * R
+					内顶点坐标 
+					x:  Math.cos( (54+72*i)/180*Math.PI) * r
+					y:  -Math.sin((54+72*i)/180*Math.PI) * r
+
+				 * */
+				//获取canvas对象
+				var oCanvas = document.getElementById("canvas");
+				if(oCanvas.getContext){
+					//2d绘图上下文
+					var oContext = oCanvas.getContext('2d');
+					//开始路径
+					oContext.beginPath();
+					//开始绘制
+					for(var i=0;i<5;i++){
+						//大圆外面5个点
+						oContext.lineTo(Math.cos( (18+72*i)/180*Math.PI) *300+450,-Math.sin((18+72*i)/180*Math.PI) * 300+450);
+						//小圆5个点
+						oContext.lineTo(Math.cos( (54+72*i)/180*Math.PI) *150+450,-Math.sin((54+72*i)/180*Math.PI) * 150+450);
+					}
+					//结束路径
+					oContext.closePath();
+					
+					//描边
+					oContext.stroke();
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="canvas" width="900" height="900"></canvas>
+	</body>
+</html>

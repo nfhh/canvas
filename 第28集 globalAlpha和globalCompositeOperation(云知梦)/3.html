@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			canvas{
+				border: 1px dashed gray;
+				margin-right: 10px;
+				margin-bottom: 20px;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				/*
+				 格式：oContext.globalCompositeOperation="相关的属性值";
+				source-over默认。在目标图像上显示源图像。
+				source-atop在目标图像顶部显示源图像。源图像位于目标图像之外的部分是不可见的。
+				source-in	在目标图像中显示源图像。只有目标图像内的源图像部分会显示，目标图像是透明的。
+				source-out	在目标图像之外显示源图像。只会显示目标图像之外源图像部分，目标图像是透明的。
+				destination-over在源图像上方显示目标图像。
+				destination-atop在源图像顶部显示目标图像。源图像之外的目标图像部分不会被显示。
+				destination-in在源图像中显示目标图像。只有源图像内的目标图像部分会被显示，源图像是透明的。
+				destination-out	在源图像外显示目标图像。只有源图像外的目标图像部分会被显示，源图像是透明的。
+				lighter显示源图像 + 目标图像。
+				copy显示源图像。忽略目标图像。
+				xor使用异或操作对源图像与目标图像进行组合。
+				 * */
+				//把这些属性值用数组保存
+				var arr = [
+					'source-over',
+					'source-atop',
+					'source-in',
+					'source-out',
+					'destination-over',
+					'destination-atop',
+					'destination-in',
+					'destination-out',
+					'lighter',
+					'copy',
+					'xor'
+				];
+				for(var i=0;i<arr.length;i++){
+					document.write("<div id='box_"+i+"'  style='float:left'>"+arr[i]+":<br/>");
+					//动态创建canvas标签
+					var oCanvas = document.createElement("canvas");
+					//设置canvas画布宽和高
+					oCanvas.width = 120;
+					oCanvas.height = 100;
+					//把canvas标签添加对应的div中
+					document.getElementById("box_"+i).appendChild(oCanvas);
+					//检测浏览器是否支持canvas
+					if(oCanvas.getContext){
+						//得到2d绘图上下文环境
+						var oContext = oCanvas.getContext("2d");
+						//先绘制一个矩形
+						oContext.fillStyle = "red";
+						oContext.fillRect(10,10,50,50);
+						
+						/*
+						 globalCompositeOperation 属性设置或返回如何将一个源（新的）
+						 图像绘制到目标（已有）的图像上。
+						 源图像 = 您打算放置到画布上的绘图。
+						 目标图像 = 您已经放置在画布上的绘图。
+
+						 * */
+						oContext.globalCompositeOperation = arr[i];
+						
+						oContext.beginPath();
+						//绘制一个圆
+						oContext.fillStyle = "blue";
+						oContext.arc(50,50,30,0,Math.PI*2,false);
+						oContext.fill();
+					}
+					document.write("</div>");
+				}
+			}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

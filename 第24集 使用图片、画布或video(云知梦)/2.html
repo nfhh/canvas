@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			canvas{
+				border: 1px dashed gray;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				//获取canvas对象
+				var oCanvas = document.getElementById("canvas");
+				//检测浏览器是否支持canvas
+				if(oCanvas.getContext){
+					//得到2d绘图上下文环境
+					var oContext = oCanvas.getContext("2d");
+					//在画布上定位图像，并规定图像的宽度和高度：
+					//格式：oContext.drawImage(img,x,y,width,height)
+					
+					//得到图像对象
+					var oImg = new Image();
+					//设置图片的路径
+					oImg.src = "1.jpg";
+					//图片完全加载后执行操作
+					oImg.onload = function(){
+						oContext.drawImage(oImg,10,10,50,50);
+					}
+
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="canvas" width="600" height="600"></canvas>
+	</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>填充</title>
+		<style type="text/css">
+			canvas{
+				border: 1px solid red;
+				width: 250px;
+				height: 250px;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				//获取canvas对象
+				var oCanvas = document.getElementById("canvas");
+				if(oCanvas.getContext){
+					//获取2d绘图上下文环境
+					var oContext  = oCanvas.getContext("2d");
+					//填充，本节只讲颜色填充
+					//更改填充的颜色
+					//oContext.fillStyle = 'rgb(255,0,0)';
+					//rgba表示方法
+					oContext.fillStyle = 'rgba(255,0,0,0.3)';
+					oContext.fillRect(20,10,50,50);
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="canvas" width="" height=""></canvas>
+	</body>
+</html>

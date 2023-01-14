@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			canvas{
+				border: 1px dashed gray;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				//获取canvas对象
+				var oCanvas =document.getElementById("canvas");
+				//检测浏览器是否支持canvas
+				if(oCanvas.getContext){
+					//得到2d绘图上下文环境
+					var oContext = oCanvas.getContext("2d");
+					//绘制一个填充的正形
+					oContext.fillRect(50,50,180,180);
+					//保存状态
+					oContext.save();
+					//设置颜色
+					oContext.fillStyle = "red";
+					//绘制正方形
+					oContext.fillRect(70,70,140,140);
+					
+					//保存状态
+					oContext.save();
+				
+					//设置颜色
+					oContext.fillStyle = "blue";
+					//绘制正方形
+					oContext.fillRect(90,90,100,100);
+					//保存状态
+					oContext.save();
+					
+					//状态恢复
+					oContext.restore();
+					oContext.restore();
+					//再开始绘制正方形
+					oContext.fillRect(110,110,60,60);
+					
+					//保存状态
+					oContext.save();
+					//oContext.restore();
+		
+					oContext.fillRect(130,130,20,20);
+				
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="canvas" width="600" height="600"></canvas>
+	</body>
+</html>

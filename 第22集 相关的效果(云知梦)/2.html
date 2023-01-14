@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>黑白效果（灰度图）</title>
+		<style type="text/css">
+			canvas{
+				border: 1px dashed gray;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				//获取canvas对象
+				var oCanvas = document.getElementById("canvas");
+				//检测浏览器是否支持canvas
+				if(oCanvas.getContext){
+					//得到2d绘图上下文环境
+					var oContext = oCanvas.getContext("2d");
+					
+					//图片对象
+					var oImg = new Image();
+					//设置图片的路径
+					oImg.src = "1.jpg";
+					//图片加载完毕后，执行操作
+					oImg.onload = function(){
+						oContext.drawImage(oImg,10,10);
+						//得到oImageData对象
+						var oImageData = oContext.getImageData(10,10,200,153);
+						//将彩色图片转换成黑白图片，
+						//原理：求r(data[i]), g(data[i+1]), b(data[i+2])三个通道的平均值，
+						//然后把这个平均值赋值给r, g, b。
+						var data = oImageData.data;
+						var avg = 0;
+						for(var i=0;i<data.length;i+=4){
+							//求三原色rgb的平均值
+							avg = (data[i+0]+data[i+1]+data[i+2])/3;
+							//红色
+							data[i+0]  = avg;
+							//绿色
+							data[i+1]  = avg;
+							//蓝色
+							data[i+2]  = avg;
+						}
+						
+						oContext.putImageData(oImageData,10,200);
+
+					}
+					
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="canvas" width="600" height="600"></canvas>
+	</body>
+</html>

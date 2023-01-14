@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			canvas{
+				border: 1px dashed;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				//获取canvas对象
+				var oCanvas = document.getElementById("canvas");
+				//检测浏览器是否支持canvas
+				if(oCanvas.getContext){
+					//得到2d绘图上下文环境
+					var oContext = oCanvas.getContext("2d");
+					//获取视频元素对象
+					var oV = document.getElementById("v");
+					oV.addEventListener("play",function(){
+						oContext.drawImage(oV,10,10);
+					},false)
+					
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="canvas" width="600" height="600"></canvas>
+		<video width="600" height="600" controls="controls" id="v">
+			<source src="1.mp4" type="video/mp4"></source>
+		</video>
+	</body>
+</html>

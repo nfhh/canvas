@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>font属性中的font-size 属性可设置字体的尺寸。</title>
+		<style type="text/css">
+			canvas{
+				border: 1px dashed gray;
+			}
+		</style>
+	</head>
+	<script type="text/javascript">
+		window.onload = function(){
+			/*
+			 2d绘图上下文.font = "
+			 [font-style] 
+			 属性值
+				normal	默认值。浏览器显示一个标准的字体样式。
+				italic	浏览器会显示一个斜体的字体样式。
+				oblique	浏览器会显示一个倾斜的字体样式。
+
+			 [font-variant] 
+			 	属性值
+				normal	默认值。浏览器显示一个标准的字体样式。
+				small-caps	浏览器会显示小型大写字母的字体。原本大写的英文字母不变，小写的英文字母变成大写，但是大小不变。
+
+			 [font-weight] 
+			 	属性值
+				normal	默认值。浏览器显示一个标准的字体样式。
+				bold	定义粗体字符。
+				bolder	定义更粗的字符。
+				lighter	定义更细的字符。
+				100-900之间的值	定义由粗到细的字符。400 等同于 normal，而 700 等同于 bold。
+
+			 [font-size/line-height] 
+			 	xx-small最小字体。		x-small较小字体。
+				small	小字体。			medium默认值，中等字体。
+				large	大字体。			x-large较大字体。
+				xx-large最大字体。
+				任意数值	单位px，代表字号值。
+
+			 [font-family]“
+						说明：五个参数均可缺省，各个参数间用空格隔开。
+
+			 * */
+			//获取canvas对象
+			var oCanvas = document.getElementById("canvas");
+			if(oCanvas.getContext){
+				//2d
+				var oContext = oCanvas.getContext("2d");
+				
+				//显示文本
+				oContext.fillStyle = "purple";
+				//设置属性
+				//normal	默认值。浏览器显示一个标准的字体样式。
+				oContext.font = "normal 30px 微软雅黑"
+				//显示文本
+				oContext.fillText("云知梦",100,160);
+				
+				//最小字体。
+				oContext.font = "normal xx-small 微软雅黑"
+				//显示文本
+				oContext.fillText("云知梦",100,220);
+				
+				
+				//x-small较小字体。。
+				oContext.font = "normal x-small 微软雅黑"
+				//显示文本
+				oContext.fillText("云知梦",100,280);
+				
+				
+				//small	小字体。
+				oContext.font = "normal small 微软雅黑"
+				//显示文本
+				oContext.fillText("云知梦",100,340);
+				
+				//medium默认值，中等字体。
+				oContext.font = "normal medium 微软雅黑"
+				//显示文本
+				oContext.fillText("云知梦",100,380);
+				
+				//large	大字体。
+				oContext.font = "normal large 微软雅黑"
+				//显示文本
+				oContext.fillText("云知梦",100,420);
+				
+				
+				//x-large较大字体。
+				oContext.font = "normal x-large 微软雅黑"
+				//显示文本
+				oContext.fillText("云知梦",100,460);
+				
+				//xx-large最大字体。
+				oContext.font = "normal xx-large 微软雅黑"
+				//显示文本
+				oContext.fillText("云知梦",100,580);
+				//任意数值	单位px，代表字号值。
+				oContext.font = "normal 60px 微软雅黑"
+				//显示文本
+				oContext.fillText("云知梦",100,660);
+			}
+		}
+	</script>
+	<body>
+		<canvas id="canvas" width="900" height="900"></canvas>
+	</body>
+</html>

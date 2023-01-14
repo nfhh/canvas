@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>textAlign是Canvas中绘制文本时文本的对齐方式的属性</title>
+		<style type="text/css">
+			canvas{
+				border: 1px dashed gray;
+			}
+		</style>
+	</head>
+	<script type="text/javascript">
+		window.onload = function(){
+			/*
+			格式：2d绘图.textAlign = "left" || "right" || "center" || "start" || "end";
+				left：文本左对。		right：文本右对齐。	center：文本居中对齐。
+				start：默认值，文本对齐界线开始的地方（左对齐指本地从左向右，右对齐指本地从右向左）。
+				end：文本对齐界线结束的地方（左对齐指本地从左向右，右对齐指本地从右向左）
+
+			 * */
+			//获取canvas对象
+			var oCanvas = document.getElementById("canvas");
+			if(oCanvas.getContext){
+				//2d
+				var oContext = oCanvas.getContext("2d");
+				//显示文本
+				oContext.fillStyle = "green";
+				oContext.font = "30px 微软雅黑";
+				//left：文本左对。
+				oContext.textAlign = "left";
+				oContext.fillText("Canvas-left",400,60);
+				
+				//right：文本右对齐。
+				oContext.textAlign = "right";
+				oContext.fillText("Canvas-right",400,160);
+				
+				//center：文本居中对齐。
+				oContext.textAlign = "center";
+				oContext.fillText("Canvas-center",400,260);
+				
+				//start：默认值，文本对齐界线开始的地方（左对齐指本地从左向右，右对齐指本地从右向左）。
+				oContext.textAlign = "start";
+				oContext.fillText("Canvas-start",400,360);
+				
+				//end：文本对齐界线结束的地方（左对齐指本地从左向右，右对齐指本地从右向左）
+				oContext.textAlign = "end";
+				oContext.fillText("Canvas-end",400,460);
+				
+				//画线
+				oContext.strokeStyle = "#808080";
+				oContext.lineWidth  = 2;
+				oContext.moveTo(400,0);
+				oContext.lineTo(400,800);
+				oContext.stroke();
+				
+				
+			}
+		}
+	</script>
+	<body>
+		<canvas id="canvas" width="800" height="800"></canvas>
+	</body>
+</html>

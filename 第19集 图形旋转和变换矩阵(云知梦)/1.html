@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>旋转rotate() </title>
+		<style type="text/css">
+			canvas{
+				border: 1px dashed gray;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				/*
+				 rotate() 方法旋转当前的绘图。旋转角度以顺时针方向为正方向，
+				 以弧度为单位，旋转中心为canvas的原点。角度转换为弧度，
+				 使用 degrees*Math.PI/180 公式进行转换。
+				例如旋转 5 度，公式为：5*Math.PI/180。
+				格式：
+				2d.rotate(angle)
+				参数：angle旋转角度，以弧度计。
+
+				 * */
+				//获取canvas对象
+				var oCanvas = document.getElementById("canvas");
+				//检测浏览器是否支持canvas
+				if(oCanvas.getContext){
+					//得到一个2d绘图上下文环境
+					var oContext = oCanvas.getContext("2d");
+					//绘制一个矩形
+					oContext.fillStyle = "red";
+					//旋转角度2d.rotate(angle)
+					oContext.rotate(30*Math.PI/180);
+					oContext.fillRect(0,0,250,100);
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="canvas" width="600" height="600"></canvas>
+	</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>font属性中的font-style 属性定义字体的风格。</title>
+		<style type="text/css">
+			canvas{
+				border: 1px dashed gray;
+			}
+		</style>
+	</head>
+	<script type="text/javascript">
+		window.onload = function(){
+			/*
+			 2d绘图上下文.font = "
+			 [font-style] 
+			 属性值
+				normal	默认值。浏览器显示一个标准的字体样式。
+				italic	浏览器会显示一个斜体的字体样式。
+				oblique	浏览器会显示一个倾斜的字体样式。
+
+			 [font-variant] 
+			 [font-weight] 
+			 [font-size/line-height] 
+			 [font-family]“
+						说明：五个参数均可缺省，各个参数间用空格隔开。
+
+			 * */
+			//获取canvas对象
+			var oCanvas = document.getElementById("canvas");
+			if(oCanvas.getContext){
+				//2d
+				var oContext = oCanvas.getContext("2d");
+				
+				//显示文本
+				oContext.fillStyle = "purple";
+				//设置属性
+				//normal	默认值。浏览器显示一个标准的字体样式。
+				oContext.font = "normal 40px 微软雅黑"
+				oContext.fillText("云知梦",100,60);
+				
+				
+				//italic	浏览器会显示一个斜体的字体样式。
+				oContext.font = "italic 40px 微软雅黑"
+				oContext.fillText("云知梦",100,100);
+				
+				//oblique	浏览器会显示一个倾斜的字体样式。
+				oContext.font = "oblique 40px 微软雅黑"
+				oContext.fillText("云知梦",100,160);
+				
+				
+			}
+		}
+	</script>
+	<body>
+		<canvas id="canvas" width="250" height="250"></canvas>
+	</body>
+</html>

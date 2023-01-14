@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			canvas{
+				border: 1px solid green;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				//获取canvas标签这个对象的引用
+				var oCanvas = document.getElementById("canvas");
+				//alert(oCanvas);   //[object HTMLCanvasElement]
+				//先获取一下宽度width这个属性
+				//alert(oCanvas.width);
+				//设置一下宽度
+				//oCanvas.width = 300;
+				
+				//获取一下高度height属性
+				//alert(oCanvas.height);
+				//设置高度height属性
+				oCanvas.height = 300;
+			}
+		</script>
+	</head>
+	<body>
+		<canvas width="250" height="250" id="canvas"></canvas>
+	</body>
+</html>

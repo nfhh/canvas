@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			canvas{
+				border: 1px dashed gray;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				//获取canvas对象
+				var oCanvas = document.getElementById("canvas");
+				//检测浏览器是否支持canvas
+				if(oCanvas.getContext){
+					//得到2d绘图上下文环境
+					var oContext = oCanvas.getContext("2d");
+					
+					/*
+					 shadowColor 属性与 shadowBlur 属性一起使用，来创建阴影。
+					格式：
+					oContext.shadowBlur=number; //number阴影的模糊级数
+					oContext.shadowColor=color; //color用于阴影的 CSS 颜色值
+					shadowColor	阴影的颜色，默认值为黑色
+					shadowBlur	阴影的模糊值，默认值为0。该值越大，模糊度越强；该值越小，模糊度越弱
+
+
+				shadowOffsetX 和 shadowOffsetY 属性来调节阴影效果shadowOffsetX阴影与图形的水平距离，默认值为0。大于0时向右偏移，小于0时向左偏移。shadowOffsetY	阴影与图形的垂直距离，默认值为0。大于0时向下偏移，小于0时向上偏移。
+				oContext.shadowBlur=10;
+				oContext.shadowOffsetX=number;   //number正值或负值，定义阴影与形状的水平距离。
+				oContext.shadowOffsetY=number;   //number正值或负值，定义阴影与形状的垂直距离。
+oContext.shadowColor=color;
+
+					 * */
+					//阴影的模糊值
+					oContext.shadowBlur = 10;
+					oContext.shadowOffsetX = -10;
+					oContext.shadowOffsetY = -10;
+					//shadowColor	阴影的颜色
+					oContext.shadowColor = "red";
+					oContext.fillRect(50,50,100,50);
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="canvas" width="600" height="600"></canvas>
+	</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			canvas{
+				border: 1px dashed gray;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				/*
+				 * canvas允许将图像文件插入画布。
+				 * 使用new Image()创建一个Image对象，通过Image对象的src属性给浏览器缓存了一张图片。
+				 * 当图片完全加载完成后。使用createPattern() 方法在指定的方向内重复指定的元素。
+				 * 元素可以是图片、视频，或者其他 canvas 元素。
+
+				 图案文本
+				格式：2d.createPattern(image,"repeat|repeat-x|repeat-y|no-repeat");
+				image	规定要使用的图片、画布或视频元素。
+				repeat	默认。该模式在水平和垂直方向重复。
+				repeat-x	该模式只在水平方向重复。
+				repeat-y	该模式只在垂直方向重复。
+				no-repeat	该模式只显示一次（不重复）。
+
+				 * */
+				//获取canvas对象
+				var oCanvas = document.getElementById("canvas");
+				if(oCanvas.getContext){
+					//得到2d绘图上下文环境
+					var oContext = oCanvas.getContext("2d");
+					
+					//图案文本
+					//创建一个图片对象
+					var oImg = new Image();
+					//让浏览器缓存一张图片
+					oImg.src = "1.jpg";
+					//等图片完全加载完毕进行操作
+					oImg.onload = function(){
+						//使用createPattern() 方法在指定的方向内重复指定的元素
+						var patter = oContext.createPattern(oImg,"repeat");
+						//alert(patter);   //[object CanvasPattern]
+						//设置样式
+						oContext.fillStyle = patter;
+						//设置font属性
+					oContext.font = "bold 40px 微软雅黑";
+					
+					//显示文本
+					oContext.fillText("我最帅啦~",120,120);
+					}
+					
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="canvas" width="350" height="250"></canvas>
+	</body>
+</html>

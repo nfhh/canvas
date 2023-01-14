@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			canvas{
+				border: 1px dashed gray;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				//获取canvas对象
+				var oCanvas = document.getElementById("canvas");
+				if(oCanvas.getContext){
+					//获取2d绘图上下文
+					var oContext = oCanvas.getContext("2d");
+					oContext.font = "bold 40px 微软雅黑";  
+					//显示文本，填充文本
+					//改颜色
+					oContext.fillStyle = "purple";
+					oContext.fillText("云知梦",20,100);
+					
+					//描边文本显示
+					//改描边的颜色
+					oContext.strokeStyle = "orange";
+					oContext.strokeText("云知梦",20,102);
+					//改颜色
+					oContext.fillStyle = "purple";
+					oContext.fillText("云知梦",20,103);
+					
+					//描边文本显示
+					//改描边的颜色
+					oContext.strokeStyle = "blue";
+					oContext.strokeText("云知梦",20,106);
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="canvas" width="250" height="250"></canvas>
+	</body>
+</html>

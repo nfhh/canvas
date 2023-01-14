@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>绘制图形并使用图片进行填充</title>
+		<style type="text/css">
+			canvas{
+				border: 1px dashed gray;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				//获取canvas对象
+				var oCanvas = document.getElementById("canvas");
+				if(oCanvas.getContext){
+					//得到2d绘图上下文环境
+					var oContext = oCanvas.getContext("2d");
+					//开始绘制五角星
+					//开始路径
+					oContext.beginPath();
+					for(var i=0;i<5;i++){
+						//外面5个点
+						oContext.lineTo(Math.cos((18+72*i)/180*Math.PI)*100+200,-Math.sin((18+72*i)/180*Math.PI)*100+200);
+						//里面5个点
+						oContext.lineTo(Math.cos((54+72*i)/180*Math.PI)*50+200,-Math.sin((54+72*i)/180*Math.PI)*50+200)
+					}
+					//结束路径
+					oContext.closePath();
+					//创建新图像对象
+					var oImg = new Image();
+					//设置图片的地址
+					oImg.src = "1.jpg";
+					//当图片加载完毕之后，开始执行
+					oImg.onload = function(){
+						var pattern = oContext.createPattern(oImg,"repeat");
+						//设置填充的样式
+						oContext.fillStyle = pattern;
+						oContext.fill();
+					}
+					
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="canvas" width="600" height="600"></canvas>
+	</body>
+</html>

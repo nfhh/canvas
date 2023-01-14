@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			canvas{
+				border: 1px dashed gray;
+				position: absolute;
+				top: 50px;
+				left: 50%;
+				margin-left: -300px;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				/*
+				 
+				 格式：
+					var pattern = 2d.createPattern(image , type);
+					2d.fillStyle = pattern;
+					2d.fillRect();
+					
+					参数image表示被平铺的图片对象，
+					参数type表示图像平铺的方式。
+					参数type有4种取值：no-repeat、repeat-x、repeat-y、repeat。
+					repeat	默认值，在水平方向和垂直方向同时平铺
+					repeat-x	只在水平方向平铺
+					repeat-y	只在垂直方向平铺
+					no-repeat	只显示一次（不平铺）
+					说明:createPattern()方法不仅可以用于平铺图片，
+					还可以用于平铺其他canvas元素或者平铺video元素（即视频）。
+
+
+				 * */
+				//获取canvas对象
+				var oCanvas = document.getElementById("canvas");
+				if(oCanvas.getContext){
+					//得到2d绘图上下文环境
+					var oContext = oCanvas.getContext("2d");
+					//得到新的图片对象
+					var oImg = new Image();
+					//设置图片的路径
+					oImg.src = "2.png";
+					//浏览器加载图片完毕后，在进行绘图
+					oImg.onload = function(){
+						
+						//repeat	默认值，在水平方向和垂直方向同时平铺
+						//var pattern = oContext.createPattern(oImg,"repeat");
+						
+						//repeat-x	只在水平方向平铺
+						//var pattern = oContext.createPattern(oImg,"repeat-x");
+						
+						//repeat-y	只在垂直方向平铺
+						//var pattern = oContext.createPattern(oImg,"repeat-y");
+						
+						//no-repeat	只显示一次（不平铺）
+						var pattern = oContext.createPattern(oImg,"no-repeat");
+						
+						//设置样式
+						oContext.fillStyle = pattern;
+						oContext.fillRect(0,0,oCanvas.width,oCanvas.height);
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="canvas" width="600" height="300"></canvas>
+	</body>
+</html>

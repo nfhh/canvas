@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			canvas{
+				border: 1px dashed gray;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				//获取canvas对象
+				var oCanvas = document.getElementById("canvas");
+				//检测浏览器是否支持canvas
+				if(oCanvas.getContext){
+					//得到2d绘图上下文环境
+					var oContext = oCanvas.getContext("2d");
+					oContext.shadowBlur = 10;
+					oContext.shadowOffsetX = 2;
+					oContext.shadowOffsetY = 2;
+					oContext.shadowColor = "aqua";
+					oContext.fillStyle = "blue";
+					oContext.font = "bold 60px 微软雅黑 ";
+					oContext.fillText("云知梦",50,150);
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="canvas" width="600" height="600"></canvas>
+	</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>平移translate()</title>
+		<style type="text/css">
+			canvas{
+				border: 1px dashed gray;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				/*
+				 格式：2d.translate(x,y) 
+				说明:x,y两个参数分别以原点为坐标 向左增加x个单位值，向下增加y个单位值。
+				canvas的绘图状态一旦设置，就会影响之后所有元素的绘制属性。
+				 * */
+				//获取canvas元素对象
+				var oCanvas = document.getElementById("canvas");
+				//检测浏览器是否支持canvas中的2d绘图上下文环境,如果支持进行操作
+				if(oCanvas.getContext){
+					//得到一个2d绘图上下文环境
+					var oContext = oCanvas.getContext("2d");
+					//绘制一个矩形
+					//填充颜色
+					oContext.fillStyle = "green";
+					oContext.fillRect(0,0,250,150);
+					//进行平移操作translate
+					oContext.translate(200,200);
+					//需要重新进行绘图
+					oContext.fillRect(0,0,250,150);
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="canvas" width="600" height="600"></canvas>
+	</body>
+</html>

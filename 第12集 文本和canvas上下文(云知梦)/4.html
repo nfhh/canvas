@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			canvas{
+				border: 1px dashed gray;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				//需求：文本度量measureText()方法
+				//获取canvas对象
+				var oCanvas  = document.getElementById("canvas");
+				if(oCanvas.getContext){
+					//得到2d绘图上下文环境
+					var oContext = oCanvas.getContext("2d");
+					//显示文本
+				
+					oContext.font = "bold 30px 微软雅黑";
+					oContext.fillStyle = "blue";
+					//格式：2d .measureText("文字").width;
+					//oContext.measureText("云知梦");  [object TextMetrics]
+					var oWidth = oContext.measureText("云知梦").width;
+					alert(oWidth);
+					oContext.fillText("云知梦",200,200);
+					
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="canvas" width="600" height="600"></canvas>
+	</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			canvas{
+				border: 1px solid red;
+			}
+		</style>
+		<script type="text/javascript">
+			//通过js去检验看浏览器是否支持canvas
+			window.onload = function(){
+				//获取canvas对象
+				var oCanvas = document.getElementById("canvas");
+				if(oCanvas.getContext){
+					//如果有这个属性，说明浏览器是支持的
+					alert('您的浏览器很强大，是支持canvas的');
+				}else{
+					document.write("亲，你的浏览器老古董了，请更换吧");
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="canvas"></canvas>
+	</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 100px;
+				height: 100px;
+				background: red;
+				margin: 10px;
+				transform: rotate(45deg) translate(150px,0) scale(1.5,1.5);
+			}
+		</style>
+	</head>
+	<body>
+		<!--连写情况说明
+		如果元素需要进行多中变形，那么每个属性名称用空格隔开。
+		2D的变形模块会修改元素的坐标系，所以旋转之后再平移就不是水平平移的。
+		例如：transform: rotate(45deg) translate(100px,0) scale(1.5,1.5);-->
+		<div></div>
+
+	</body>
+</html>

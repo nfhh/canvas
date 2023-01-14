@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			canvas{
+				border: 1px dashed gray;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				/*
+				 在Canvas中，我们可以调用clip()方法切割Canvas中绘制的图片。
+				 clip() 方法从原始画布中剪切任意形状和尺寸。
+				格式：2d绘图上下文.clip();
+				想要使用clip()方法切割一张图片，我们需要以下3步：
+				①绘制基本图形；②使用clip()方法；③绘制图片；
+				说明：一旦剪切了某个区域，
+				则所有之后的绘图都会被限制在被剪切的区域内（不能访问画布上的其他区域）。
+				您也可以在使用 clip() 方法前通过使用 save() 方法对当前画布区域进行保存，
+				并在以后的任意时间对其进行恢复（通过 restore() 方法）。
+
+				 * */
+				//获取canvas元素对象
+				var oCanvas = document.getElementById("canvas");
+				if(oCanvas.getContext){
+					//得到一个2d绘图上下文环境
+					var oContext = oCanvas.getContext("2d");
+					//绘制基本图形
+					//开始路径
+					oContext.beginPath();
+					oContext.arc(70,70,50,0,360*Math.PI/180,true);
+					//结束路径
+					oContext.closePath();
+					oContext.stroke();
+					
+					//使用clip()方法，进行切割
+					oContext.clip();
+					
+					//绘制图片
+					//得到图片的对象
+					var oImg = new Image();
+					//设置图片的路径
+					oImg.src = "1.jpg";
+					//浏览器加载图片完毕后，开始绘图
+					oImg.onload = function(){
+						oContext.drawImage(oImg,0,0);
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="canvas" width="600" height="300"></canvas>
+	</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>setLineDash 定义线条的虚实样式</title>
+		<style type="text/css">
+			canvas{
+				border: 1px dashed gray;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				var oCanvas = document.getElementById("canvas");
+				if(oCanvas.getContext){
+					var oContext = oCanvas.getContext("2d");
+					//绘制矩形
+					oContext.beginPath();
+					//oContext.setLineDash([10]);  //一个参数代表用虚线显示，线的长度是10，每条线的间距也是10
+					//oContext.setLineDash([]);  //没有参数，就代表实线
+					//oContext.setLineDash([1,10]);   //线条的长度是1，间距是10
+					oContext.setLineDash([1,10,20]); //
+					oContext.strokeRect(100,100,200,200)
+					oContext.closePath();
+					oContext.stroke();
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="canvas" width="500" height="500"></canvas>
+	</body>
+</html>

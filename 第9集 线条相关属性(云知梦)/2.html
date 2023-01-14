@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>lineCap属性就是定义线段开头和结尾处的形状。</title>
+		<style type="text/css">
+			canvas{
+				border: 1px dashed gray;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				var oCanvas = document.getElementById("canvas");
+				if(oCanvas.getContext){
+					var oContext = oCanvas.getContext("2d");
+					
+					/*
+					 butt	默认。向线条的每个末端添加平直的边缘。
+					round	向线条的每个末端添加圆形线帽。
+					square	向线条的每个末端添加正方形线帽。
+					 * 
+					 * */
+					
+					oContext.lineWidth = 10;
+					oContext.strokeStyle = 'lawngreen';
+					
+					//butt默认。向线条的每个末端添加平直的边缘。
+					oContext.beginPath();
+					oContext.lineCap = 'butt';
+					oContext.moveTo(100,200);
+					oContext.lineTo(600,200);
+					oContext.stroke();
+					
+					//round	向线条的每个末端添加圆形线帽。
+					oContext.beginPath();
+					oContext.lineCap = 'round';
+					oContext.moveTo(100,300);
+					oContext.lineTo(600,300);
+					//oContext.closePath();   //不能加
+					oContext.stroke();
+					
+					//square	向线条的每个末端添加正方形线帽。
+					oContext.beginPath();
+					oContext.lineCap = 'square';
+					oContext.moveTo(100,400);
+					oContext.lineTo(600,400);
+					//oContext.closePath();   //不能加
+					oContext.stroke();
+					
+					//绘制两条垂直的线
+					oContext.beginPath();
+					oContext.strokeStyle = '#000';
+					oContext.lineWidth = 1;
+					oContext.moveTo(100,100);
+					oContext.lineTo(100,600);
+					oContext.stroke();
+					
+					//绘制两条垂直的线
+					oContext.beginPath();
+					oContext.lineWidth = 1;
+					oContext.moveTo(600,100);
+					oContext.lineTo(600,600);
+					oContext.stroke();
+				
+			}
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="canvas" width="900" height="900"></canvas>
+	</body>
+</html>

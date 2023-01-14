@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>矩阵变换transform() </title>
+		<style type="text/css">
+			canvas{
+				border: 1px dashed gray;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				/*
+				 格式：2d.transform(a,b,c,d,e,f);
+				a水平缩放绘图			b水平倾斜绘图
+				c垂直倾斜绘图			d垂直缩放绘图
+				e水平移动绘图			f垂直移动绘图
+				说明：调用 transform() 时，它都会在前一个变换矩阵上构建。
+						transform()方法是将现有的变换矩阵乘以所指定的值，
+						而不是直接设置变换矩阵的值。多次调用transform,
+						每一次变形都是应用到前一个变形得到的变换矩阵。
+
+				 * */
+				//获取canvas元素对象
+				var oCanvas = document.getElementById("canvas");
+				//检测浏览器是否支持canvas
+				if(oCanvas.getContext){
+					//得到2d绘图上下文环境
+					var oContext = oCanvas.getContext("2d");
+					//绘制一个矩形
+					//设置一个红色
+					oContext.fillStyle ="red";
+					//开始绘制
+					oContext.fillRect(0,0,250,100);
+					
+					//矩阵变换transform
+					oContext.transform(1,0.5,-0.5,1,30,30);
+					//再绘制一个矩形去
+					//设置的颜色为蓝色
+					oContext.fillStyle = "blue";
+					//开始绘制矩形
+					oContext.fillRect(0,0,250,100);
+					
+					//矩阵变换transform
+					oContext.transform(1,0.5,-0.5,1,30,30);
+					//再绘制一个矩形去
+					//设置的颜色为黄色
+					oContext.fillStyle = "yellow";
+					//开始绘制矩形
+					oContext.fillRect(0,0,250,100);
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="canvas" width="600" height="600"></canvas>
+	</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>填充文本的显示</title>
+		<style type="text/css">
+			canvas{
+				border: 1px dashed gray;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				//需求：使用fillText(要显示的文本内容,x轴坐标,y轴左边,[文本显示的最大宽度])
+				//获取canvas元素对象
+				var oCanvas = document.getElementById("canvas");
+				if(oCanvas.getContext){
+					//获取2d绘图上下文环境
+					var oContext = oCanvas.getContext("2d");
+					oContext.font = "30px 微软雅黑";
+					//显示填充文本
+					oContext.fillText("云知梦，只为有梦想的人",10,100)
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="canvas" width="600" height="600"></canvas>
+	</body>
+</html>

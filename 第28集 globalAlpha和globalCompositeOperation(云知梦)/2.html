@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			canvas{
+				border: 1px dashed gray;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				//获取canvas对象
+				var oCanvas = document.getElementById("canvas");
+				//检测浏览器是否支持canvas
+				if(oCanvas.getContext){
+					//得到2d绘图上下文环境
+					var oContext = oCanvas.getContext("2d");
+					oContext.fillRect(10,10,100,50);
+					/*
+					 globalAlpha 属性值必须是介于 0.0（完全透明） 与 1.0（不透明） 之间的数字。
+格式：oContext.globalAlpha=number;
+参数说明：
+number	透明值。必须介于 0.0（完全透明） 与 1.0（不透明） 之间。
+
+					 * */
+					//设置透明度
+					oContext.globalAlpha = 0.2;
+					oContext.fillStyle = "red";
+					oContext.fillRect(20,20,100,50);
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="canvas" width="600" height="600"></canvas>
+	</body>
+</html>

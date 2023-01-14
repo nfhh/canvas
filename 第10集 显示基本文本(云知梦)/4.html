@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>js操作dom方式来输出文本</title>
+	</head>
+	<script type="text/javascript">
+		window.onload = function(){
+			//获取元素对象
+			var oBox = document.getElementById("box");
+			//innerText
+			//oBox.innerText = 'js中的输出';
+			//oBox.innerHTML = 'js中的输出';
+			//oBox.innerHTML = '<h1>可以渲染出html标签</h1>';
+			//oBox.innerText =  '<h1>可以渲染出html标签</h1>';
+			oBox.textContent =  '<h1>可以渲染出html标签</h1>';
+		}
+	</script>
+	<body>
+		<div id="box"></div>
+	</body>
+</html>

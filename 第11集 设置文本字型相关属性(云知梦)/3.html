@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>font属性中的font-weight 属性设置文本的粗细。</title>
+		<style type="text/css">
+			canvas{
+				border: 1px dashed gray;
+			}
+		</style>
+	</head>
+	<script type="text/javascript">
+		window.onload = function(){
+			/*
+			 2d绘图上下文.font = "
+			 [font-style] 
+			 属性值
+				normal	默认值。浏览器显示一个标准的字体样式。
+				italic	浏览器会显示一个斜体的字体样式。
+				oblique	浏览器会显示一个倾斜的字体样式。
+
+			 [font-variant] 
+			 	属性值
+				normal	默认值。浏览器显示一个标准的字体样式。
+				small-caps	浏览器会显示小型大写字母的字体。原本大写的英文字母不变，小写的英文字母变成大写，但是大小不变。
+
+			 [font-weight] 
+			 	属性值
+				normal	默认值。浏览器显示一个标准的字体样式。
+				bold	定义粗体字符。
+				bolder	定义更粗的字符。
+				lighter	定义更细的字符。
+				100-900之间的值	定义由粗到细的字符。400 等同于 normal，而 700 等同于 bold。
+
+			 [font-size/line-height] 
+			 [font-family]“
+						说明：五个参数均可缺省，各个参数间用空格隔开。
+
+			 * */
+			//获取canvas对象
+			var oCanvas = document.getElementById("canvas");
+			if(oCanvas.getContext){
+				//2d
+				var oContext = oCanvas.getContext("2d");
+				
+				//显示文本
+				oContext.fillStyle = "purple";
+				//设置属性
+				//normal	默认值。浏览器显示一个标准的字体样式。
+				oContext.font = "normal 40px 微软雅黑"
+				//显示文本
+				oContext.fillText("云知梦",100,100);
+				
+				
+				//bold	定义粗体字符。
+				oContext.font = "bold	 40px 微软雅黑"
+				//显示文本
+				oContext.fillText("云知梦",100,200);
+				
+				
+				//bolder	定义更粗的字符。
+				oContext.font = "bolder	 40px 微软雅黑"
+				//显示文本
+				oContext.fillText("云知梦",100,300);
+				
+				
+				//lighter	定义更细的字符。
+				oContext.font = "lighter	 40px 微软雅黑"
+				//显示文本
+				oContext.fillText("云知梦",100,400);
+				
+				//100-900之间的值	定义由粗到细的字符。400 等同于 normal，而 700 等同于 bold。
+				oContext.font = "700	 40px 微软雅黑"
+				//显示文本
+				oContext.fillText("云知梦",100,500);
+				
+				
+			}
+		}
+	</script>
+	<body>
+		<canvas id="canvas" width="900" height="900"></canvas>
+	</body>
+</html>

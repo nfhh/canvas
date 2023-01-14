@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>drawImage(img , dx , dy , dw , dh)可以绘制大小不一样的图片,在画布上定位图像，并规定图像的宽度和高度。</title>
+		<style type="text/css">
+			canvas{
+				border: 1px dashed gray;
+				position: absolute;
+				left: 50%;
+				margin-left: -300px;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				/*
+				 drawImage(img , dx , dy , dw , dh)可以绘制大小不一样的图片,在画布上定位图像，并规定图像的宽度和高度。
+				参数说明：
+				img:规定要使用的图像、画布或视频。
+				dx:在画布上放置图像的 x 坐标位置。
+				dy:在画布上放置图像的 y 坐标位置。
+				dw:要使用的图像的宽度。（伸展或缩小图像）
+				dh:要使用的图像的高度。（伸展或缩小图像）
+
+				 * */
+				//获取canvas对象
+				var oCanvas = document.getElementById("canvas");
+				if(oCanvas.getContext){
+					//得到2d绘图上下文环境
+					var oContext = oCanvas.getContext("2d");
+					//得到一个新的图像对象
+					var oImg = new Image();
+					//alert(oImg);    //[object HTMLImageElement]
+					//设置图片的地址
+					oImg.src = "1.jpg";
+					//等待浏览器把图片加载完毕后，开始绘图
+					oImg.onload = function(){
+						oContext.drawImage(oImg,30,30,200,200);
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="canvas" width="600" height="600"></canvas>
+	</body>
+</html>

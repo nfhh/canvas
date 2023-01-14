@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 100px;
+				height: 100px;
+				background: red;
+				margin: 10px;
+			}
+			div:nth-child(1){
+				/*transform: scale(1.1);*/
+				/*transform: scale(1.0,1.1);*/
+				transform: scale(0.5);
+			}
+			div:nth-child(2){
+				transform: scaleX(1.2);
+			}
+			div:nth-child(3){
+				transform: scaleY(0.6);
+			}
+		</style>
+	</head>
+	<body>
+		<!--scale    元素的尺寸会放大或缩小，根据给定的宽度（X 轴）和高度（Y 轴）参数来变化。
+		水平方向和垂直方向中的参数必须写的是多少倍。
+格式为：transform: scale(水平方向,垂直方向);
+注意点：如果取值是1，代表不变；如果取值是大于1，代表需要放大；
+如果取值是小于1，代表需要缩小；如果水平和垂直缩放都一样，那么可以简写为一个参数。
+如：transform: scale(1.5);元素的宽度和高度都放大到原始宽度和高度的1.5倍。-->
+
+		<div>scale</div>
+		<div>scaleX</div>
+		<div>scaleY</div>
+	</body>
+</html>

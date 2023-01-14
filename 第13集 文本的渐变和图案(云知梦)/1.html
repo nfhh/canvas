@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>渐变文本显示</title>
+		<style type="text/css">
+			canvas{
+				border: 1px dashed gray;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				/*
+				 需求：createLinearGradient()和addColorStop()这两个方法配合使用来实现线性渐变。 
+					var radialGradient =2d.createLinearGradient（x1, y1, x2, y2）方法，得到一个radialGradient对象。参数x1和y1是起点坐标，x2和y2是终点坐标。通过不同的坐标值，可以生成从上至下、从左至右的渐变等等。 
+					radialGradient.addColorStop（offset, color）方法，参数offset是一个范围在0.0到1.0之间的浮点值，表示渐变的开始点和结束点之间的一部分，offset为0对应开始点，offset为1对应结束点，color为CSS颜色值的字符串表示。
+
+				 * */
+				//获取canvas对象
+				var oCanvas = document.getElementById("canvas");
+				if(oCanvas.getContext){
+					// 得到2d绘图上下文环境
+					var oContext = oCanvas.getContext("2d");
+					
+					//得到一个object CanvasGradient
+					var oG = oContext.createLinearGradient(0,0,oCanvas.width,oCanvas.height);
+					//alert(oG);  //[object CanvasGradient]
+					//颜色的设置
+					oG.addColorStop(0.2,"red");   //offset  0.0~1.0   ,color  :颜色跟css一样
+					oG.addColorStop(0.4,"green"); 
+					oG.addColorStop(0.5,"blue"); 
+					oG.addColorStop(0.7,"purple"); 
+					oG.addColorStop(0.86,"orange"); 
+					oG.addColorStop(1.0,"#000"); 
+					//设置font属性
+					oContext.font = "bold 40px 微软雅黑";
+					//设置颜色
+					oContext.fillStyle = oG;
+					//显示文本
+					oContext.fillText("我最帅啦~",100,75);
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="canvas" width="350" height="150"></canvas>
+	</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			canvas{
+				border: 1px dashed gray;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				//用户在单行文本框中输入内容，就在canvas画布上进行渲染显示
+				//分析
+				/*
+				 //需要canvas能显示文本  fillText()
+				 //需要监听文本中的内容，需要一个监听事件addEventLister 
+				 
+				 //能文本框的值，需要一个value属性
+				 * */
+				//获取canvas对象
+				var oCanvas = document.getElementById("canvas");
+				//获取文本框的元素对象
+				var oTxt = document.getElementById("txt");
+				if(oCanvas.getContext){
+					//得到2d绘图上下文
+					var oContext = oCanvas.getContext("2d");
+					
+					
+					//监听文本框
+					oTxt.addEventListener("keyup",showText,false);
+				}
+				function showText(e){
+					var ev = window.event || e;
+					//得到目标
+					var target = ev.target;
+					//alert(target);
+					//得到文本框中的值
+					var txtValue = target.value;
+					//alert(txtValue);
+					//绘画时，先把画布清理下
+					oContext.clearRect(0,0,oCanvas.width,oCanvas.height);
+					//设置font属性
+					oContext.font = "bold 30px 微软雅黑";
+					// 显示文本
+					oContext.fillText(txtValue,60,75);
+				}
+			}
+			
+		</script>
+	</head>
+	<body>
+		<p><label for="txt">请输入内容：</label><input type="text" name="txt" id="txt"/></p>
+		<canvas id="canvas" width="250" height="150"></canvas>
+	</body>
+</html>

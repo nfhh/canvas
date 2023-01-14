@@ -1,0 +1,15 @@
+相关的贝塞尔曲线参考网址
+
+css3过渡和动画中的贝塞尔曲线cubic-bezier
+
+
+http://cubic-bezier.com/
+
+
+
+
+二次贝塞尔曲线
+http://tinyurl.com/html5quadratic
+
+三次贝塞尔曲线
+http://tinyurl.com/html5bezier

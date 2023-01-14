@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			canvas{
+				border: 1px dashed gray;
+				position: absolute;
+				top: 50px;
+				left: 50%;
+				margin-left: -125px;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				//需求，清理画布 clearRect(x,y,w,h);
+				//获取cavans对象
+				var oCanvas = document.getElementById("canvas");
+				//获取按钮对象
+				var oBtn = document.getElementById("btn")
+				if(oCanvas.getContext){
+					//得到2d绘图上下文环境
+					var oContext = oCanvas.getContext("2d");
+					//更改填充颜色
+					oContext.fillStyle = 'red';
+					//绘制一个填充的矩形
+					oContext.fillRect(30,30,100,100);
+				}
+				oBtn.onclick = function(){
+					oContext.clearRect(0,0,oCanvas.width,oCanvas.height);
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="canvas" width="250" height="250"></canvas>
+		<input type="button" id="btn"  value="清画布"/>
+	</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			canvas{
+				border: 1px dashed gray;
+				position: absolute;
+				top: 50px;
+				left: 50%;
+				margin-left: -125px;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				//需求使用rect方法绘制矩形rect(x,y,w,h),一定要配合stroke()方法进行描边矩形的绘制
+				//获取canvas对象
+				var oCanvas = document.getElementById("canvas");
+				if(oCanvas.getContext){
+					//得到2d绘图上下文环境
+					var oContext  = oCanvas.getContext("2d");
+					//绘制矩形
+					oContext.rect(30,30,50,60);
+					//描边绘制
+					oContext.stroke();
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="canvas" width="250" height="250"></canvas>
+	</body>
+</html>

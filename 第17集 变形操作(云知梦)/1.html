@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>rotate旋转</title>
+		<style type="text/css">
+			/*rotate  元素旋转角度给定的是正数的话表示顺时针旋转给定的角度。
+			允许负值，元素将逆时针旋转。
+			例如：transform:rotate(45deg); 通过rotate方法顺时针让元素旋转45deg。
+			deg是单位，代表多少度。*/
+
+			.box{
+				width: 100px;
+				height: 100px;
+				margin: 30px;
+				background: red;
+				
+			}
+			.box:nth-child(1){
+				transform: rotate(45deg);
+			}
+			.box:nth-child(2){
+				transform: rotateX(45deg);
+			}
+			.box:nth-child(3){
+				transform: rotateY(45deg);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">rotate</div>
+		<div class="box">rotateX</div>
+		<div class="box">rotateY</div>
+	</body>
+</html>

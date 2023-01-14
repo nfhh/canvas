@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			canvas{
+				border: 1px dashed gray;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				//获取canvas对象
+				var oCanvas = document.getElementById("canvas");
+				//检测浏览器是否支持canvas
+				if(oCanvas.getContext){
+					//得到2d绘图上下文环境
+					var oContext = oCanvas.getContext("2d");
+					//设置描边的颜色
+					oContext.strokeStyle = "red";
+					oContext.lineWidth = 6;
+					//绘制一条直线
+					//定义画笔的起点
+					oContext.moveTo(10,10);
+					//定义结束点
+					oContext.lineTo(500,10);
+					//描边
+					oContext.stroke();
+					
+					//重置一下路径
+					oContext.beginPath();
+					
+					//绘制一个圆
+					//设置一个颜色
+					oContext.fillStyle = "yellow";
+					//绘制圆
+					oContext.arc(250,250,100,0,Math.PI*2,false);
+					
+					//填充
+					oContext.fill();
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="canvas" width="600" height="600"></canvas>
+	</body>
+</html>
